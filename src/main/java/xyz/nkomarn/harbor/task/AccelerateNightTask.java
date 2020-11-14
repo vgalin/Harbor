@@ -24,11 +24,11 @@ public class AccelerateNightTask extends BukkitRunnable {
         Bukkit.getScheduler().runTask(harbor, () -> {
             Config config = harbor.getConfiguration();
 
-            if (config.getBoolean("night-skip.clear-rain")) {
+            if (config.getBoolean("night-skip.clear-rain") && world.hasStorm()) {
                 world.setStorm(false);
             }
 
-            if (config.getBoolean("night-skip.clear-thunder")) {
+            if (config.getBoolean("night-skip.clear-thunder") && world.isThundering()) {
                 world.setThundering(false);
             }
         });
